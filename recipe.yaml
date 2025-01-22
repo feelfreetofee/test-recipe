@@ -12,10 +12,11 @@ tasks:
   - action: download_github
     src: https://github.com/feelfreetofee/test-recipe
     ref: main
-    dest: ./
+    dest: ./tmp
 
-  - action: remove_path
-    path: ./recipe.yaml
+  - action: move_path
+    src: ./tmp/server.cfg
+    dest: ./server.cfg
 
   # Download default CFX resources
   - action: download_github
