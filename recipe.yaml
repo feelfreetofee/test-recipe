@@ -287,6 +287,24 @@ tasks:
   - action: remove_path
     path: ./resources/[core]/esx_skin
 
+  # Download NPWD
+  - action: download_file
+    path: ./tmp/files/project-error/screenshot-basic.zip
+    url: https://github.com/project-error/screenshot-basic/releases/latest/download/screenshot-basic.zip
+  - action: unzip
+    dest: ./resources/[standalone]/screenshot-basic
+    src: ./tmp/files/project-error/screenshot-basic.zip
+
+  - action: download_file
+    path: ./tmp/files/project-error/npwd.zip
+    url: https://github.com/project-error/npwd/releases/latest/download/npwd.zip
+  - action: unzip
+    dest: ./resources/[standalone]
+    src: ./tmp/files/project-error/npwd.zip
+
+  - action: query_database
+    file: ./resources/[standalone]/npwd/import.sql
+
   ## Cleanup
   - action: remove_path
     path: ./tmp
