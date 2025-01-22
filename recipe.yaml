@@ -213,12 +213,18 @@ tasks:
     ref: main
     dest: ./resources/[esx_addons]/esx_vehicleshop
 
-  - action: download_file
-    path: ./tmp/files/esx_hud.zip
-    url: https://github.com/esx-framework/esx_hud/releases/latest/download/esx_hud.zip
-  - action: unzip
+#  - action: download_file
+#    path: ./tmp/files/esx_hud.zip
+#    url: https://github.com/esx-framework/esx_hud/releases/latest/download/esx_hud.zip
+#  - action: unzip
+#    dest: ./resources/[esx_addons]
+#    src: ./tmp/files/esx_hud.zip
+
+  - action: download_github
+    src: https://github.com/Mycroft-Studios/trew_hud-remastered
+    ref: master
+    subpath: ESX
     dest: ./resources/[esx_addons]
-    src: ./tmp/files/esx_hud.zip
 
   # Download OX resources
   - action: download_file
@@ -273,7 +279,8 @@ tasks:
   - action: write_file
     file: ./resources/[standalone]/illenium-appearance/fxmanifest.lua
     append: true
-    data: 'provides {"esx_skin", "skinchanger"}'
+    data: 'provides {"esx_skin", "skinchanger"}
+    dependency "ox_lib"'
 
   - action: query_database
     file: ./resources/[standalone]/illenium-appearance/sql/player_outfits.sql
