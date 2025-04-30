@@ -213,18 +213,12 @@ tasks:
     ref: main
     dest: ./resources/[esx_addons]/esx_vehicleshop
 
-#  - action: download_file
-#    path: ./tmp/files/esx_hud.zip
-#    url: https://github.com/esx-framework/esx_hud/releases/latest/download/esx_hud.zip
-#  - action: unzip
-#    dest: ./resources/[esx_addons]
-#    src: ./tmp/files/esx_hud.zip
-
-  - action: download_github
-    src: https://github.com/Mycroft-Studios/trew_hud-remastered
-    ref: master
-    subpath: ESX
+  - action: download_file
+    path: ./tmp/files/esx_hud.zip
+    url: https://github.com/esx-framework/esx_hud/releases/latest/download/esx_hud.zip
+  - action: unzip
     dest: ./resources/[esx_addons]
+    src: ./tmp/files/esx_hud.zip
 
   # Download OX resources
   - action: download_file
