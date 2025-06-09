@@ -3,9 +3,16 @@ $onesync: on
 
 name: ESX Legacy
 author: ESX Framework
-description: The official recipe of the most popular FiveM RP framework, containing Jobs, Housing, Vehicles & more!
+description: The semi-official recipe of the most popular FiveM RP framework, containing Jobs, Housing, Vehicles & more!
 
 tasks:
+  # Download default CFX resources
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    ref: master
+    subpath: resources/[system]
+    dest: ./resources/[cfx-default]/[system]
+
   # Download server.cfg
   - action: connect_database
 
@@ -17,36 +24,6 @@ tasks:
   - action: move_path
     src: ./tmp/server.cfg
     dest: ./server.cfg
-
-  # Download default CFX resources
-  - action: download_github
-    src: https://github.com/citizenfx/cfx-server-data
-    ref: master
-    subpath: resources/[system]
-    dest: ./resources/[cfx-default]/[system]
-
-  - action: remove_path
-    path: ./resources/[cfx-default]/[system]/sessionmanager-rdr3
-
-  - action: remove_path
-    path: ./resources/[cfx-default]/[system]/runcode
-
-  - action: remove_path
-    path: ./resources/[cfx-default]/[system]/rconlog
-
-  - action: remove_path
-    path: ./resources/[cfx-default]/[system]/baseevents
-
-  # Download standalone resources
-  - action: download_github
-    src: https://github.com/Bob74/bob74_ipl
-    ref: master
-    dest: ./resources/[standalone]/bob74_ipl
-
-  - action: download_github
-    src: https://github.com/AvarianKnight/pma-voice
-    ref: main
-    dest: ./resources/[standalone]/pma-voice
 
   # Download ESX Core
   - action: download_github
@@ -63,204 +40,63 @@ tasks:
 
   # Download ESX Addons
   - action: download_github
-    src: https://github.com/esx-framework/esx_accessories
+    src: https://github.com/esx-framework/ESX-Legacy-Addons
     ref: main
-    dest: ./resources/[esx_addons]/esx_accessories
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_addonaccount
-    ref: main
-    dest: ./resources/[esx_addons]/esx_addonaccount
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_addoninventory
-    ref: main
-    dest: ./resources/[esx_addons]/esx_addoninventory
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_ambulancejob
-    ref: main
-    dest: ./resources/[esx_addons]/esx_ambulancejob
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_animations
-    ref: main
-    dest: ./resources/[esx_addons]/esx_animations
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_banking
-    ref: main
-    dest: ./resources/[esx_addons]/esx_banking
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_basicneeds
-    ref: main
-    dest: ./resources/[esx_addons]/esx_basicneeds
-
-  - action: waste_time # prevent github throttling
-    seconds: 5
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_billing
-    ref: main
-    dest: ./resources/[esx_addons]/esx_billing
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_boat
-    ref: main
-    dest: ./resources/[esx_addons]/esx_boat
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_cruisecontrol
-    ref: main
-    dest: ./resources/[esx_addons]/esx_cruisecontrol
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_datastore
-    ref: main
-    dest: ./resources/[esx_addons]/esx_datastore
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_dmvschool
-    ref: main
-    dest: ./resources/[esx_addons]/esx_dmvschool
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_drugs
-    ref: main
-    dest: ./resources/[esx_addons]/esx_drugs
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_garage
-    ref: main
-    dest: ./resources/[esx_addons]/esx_garage
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_joblisting
-    ref: main
-    dest: ./resources/[esx_addons]/esx_joblisting
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_jobs
-    ref: main
-    dest: ./resources/[esx_addons]/esx_jobs
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_license
-    ref: main
-    dest: ./resources/[esx_addons]/esx_license
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_lscustom
-    ref: main
-    dest: ./resources/[esx_addons]/esx_lscustom
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_mechanicjob
-    ref: main
-    dest: ./resources/[esx_addons]/esx_mechanicjob
-
-  - action: waste_time # prevent github throttling
-    seconds: 5
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_optionalneeds
-    ref: main
-    dest: ./resources/[esx_addons]/esx_optionalneeds
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_policejob
-    ref: main
-    dest: ./resources/[esx_addons]/esx_policejob
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_property
-    ref: main
-    dest: ./resources/[esx_addons]/esx_property
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_rpchat
-    ref: main
-    dest: ./resources/[esx_addons]/esx_rpchat
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_service
-    ref: main
-    dest: ./resources/[esx_addons]/esx_service
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_sit
-    ref: main
-    dest: ./resources/[esx_addons]/esx_sit
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_society
-    ref: main
-    dest: ./resources/[esx_addons]/esx_society
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_status
-    ref: main
-    dest: ./resources/[esx_addons]/esx_status
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_taxijob
-    ref: main
-    dest: ./resources/[esx_addons]/esx_taxijob
-
-  - action: download_github
-    src: https://github.com/esx-framework/esx_vehicleshop
-    ref: main
-    dest: ./resources/[esx_addons]/esx_vehicleshop
-
-  - action: download_file
-    path: ./tmp/files/esx_hud.zip
-    url: https://github.com/esx-framework/esx_hud/releases/latest/download/esx_hud.zip
-  - action: unzip
+    subpath: ./[esx_addons]
     dest: ./resources/[esx_addons]
-    src: ./tmp/files/esx_hud.zip
+
+  # Download standalone resources
+  - action: download_github
+    src: https://github.com/Bob74/bob74_ipl
+    ref: master
+    dest: ./resources/[standalone]/bob74_ipl
+
+  - action: download_github
+    src: https://github.com/AvarianKnight/pma-voice
+    ref: main
+    dest: ./resources/[standalone]/pma-voice
 
   # Download OX resources
   - action: download_file
     path: ./tmp/files/oxmysql.zip
-    url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
+    url: https://github.com/CommunityOx/oxmysql/releases/latest/download/oxmysql.zip
   - action: unzip
     dest: ./resources/[ox]
     src: ./tmp/files/oxmysql.zip
 
-  - action: waste_time # prevent github throttling
-    seconds: 5
-
   - action: download_file
     path: ./tmp/files/ox_lib.zip
-    url: https://github.com/overextended/ox_lib/releases/latest/download/ox_lib.zip
+    url: https://github.com/CommunityOx/ox_lib/releases/latest/download/ox_lib.zip
   - action: unzip
     dest: ./resources/[ox]
     src: ./tmp/files/ox_lib.zip
 
   - action: download_file
     path: ./tmp/files/ox_inventory.zip
-    url: https://github.com/overextended/ox_inventory/releases/latest/download/ox_inventory.zip
+    url: https://github.com/CommunityOx/ox_inventory/releases/latest/download/ox_inventory.zip
   - action: unzip
     dest: ./resources/[ox]
     src: ./tmp/files/ox_inventory.zip
 
   - action: download_file
     path: ./tmp/files/ox_doorlock.zip
-    url: https://github.com/overextended/ox_doorlock/releases/latest/download/ox_doorlock.zip
+    url: https://github.com/CommunityOx/ox_doorlock/releases/latest/download/ox_doorlock.zip
   - action: unzip
     dest: ./resources/[ox]
     src: ./tmp/files/ox_doorlock.zip
 
   - action: download_github
-    src: https://github.com/overextended/ox_target
+    src: https://github.com/CommunityOx/ox_target
     ref: main
     dest: ./resources/[ox]/ox_target
 
   - action: download_github
-    src: https://github.com/overextended/ox_fuel
+    src: https://github.com/CommunityOx/ox_fuel
     ref: main
     dest: ./resources/[ox]/ox_fuel
+
+  - action: waste_time # prevent github throttling
+    seconds: 5
 
   # Download Illenium Appearance
   - action: download_file
