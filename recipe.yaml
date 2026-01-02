@@ -5,6 +5,9 @@ name: ESX Legacy
 author: ESX Framework
 description: The semi-official recipe of the most popular FiveM RP framework, containing Jobs, Housing, Vehicles & more!
 
+variables:
+  NPWD Discord Webhook: ""
+
 tasks:
   # Download default CFX resources
   - action: download_github
@@ -78,6 +81,15 @@ tasks:
     dest: ./resources/[ox]
     src: ./tmp/files/ox_inventory.zip
 
+  - action: remove_path
+    path: ./resources/[core]/esx_inventory
+
+  - action: remove_path
+    path: ./resources/[esx_addons]/esx_shops
+
+  - action: remove_path
+    path: ./resources/[esx_addons]/esx_weaponshop
+
   - action: download_file
     path: ./tmp/files/ox_doorlock.zip
     url: https://github.com/CommunityOx/ox_doorlock/releases/latest/download/ox_doorlock.zip
@@ -124,6 +136,12 @@ tasks:
   - action: remove_path
     path: ./resources/[core]/esx_skin
 
+  - action: remove_path
+    path: ./resources/[esx_addons]/esx_barbershop
+
+  - action: remove_path
+    path: ./resources/[esx_addons]/esx_clotheshop
+
   # Download NPWD
   - action: download_file
     path: ./tmp/files/project-error/screenshot-basic.zip
@@ -141,6 +159,12 @@ tasks:
 
   - action: query_database
     file: ./resources/[standalone]/npwd/import.sql
+
+  - action: replace_string
+    file: ./resources/[standalone]/npwd/config.json
+    search: '"images": {'
+    replace: '"images": {
+    "useWebhook": true,'
 
   ## Cleanup
   - action: remove_path
