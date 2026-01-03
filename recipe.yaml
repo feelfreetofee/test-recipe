@@ -81,6 +81,11 @@ tasks:
     dest: ./resources/[ox]
     src: ./tmp/files/ox_inventory.zip
 
+  - action: write_file
+    file: ./resources/[ox]/ox_inventory/fxmanifest.lua
+    append: true
+    data: 'dependency "ox_target"'
+
   - action: remove_path
     path: ./resources/[core]/esx_inventory
 
@@ -163,8 +168,10 @@ tasks:
   - action: replace_string
     file: ./resources/[standalone]/npwd/config.json
     search: '"images": {'
-    replace: '"images": {
-    "useWebhook": true,'
+    replace: '"images": {\n    "useWebhook": true,'
+
+  - action: ensure_dir
+    path: ./resources/[scripts]
 
   ## Cleanup
   - action: remove_path
