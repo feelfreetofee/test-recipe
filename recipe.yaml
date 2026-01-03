@@ -48,6 +48,11 @@ tasks:
     subpath: ./[esx_addons]
     dest: ./resources/[esx_addons]
 
+  - action: replace_string
+    file: ./resources/[esx_addons]/esx_hud/server/main.lua
+    search: 'VERSION:RunVersionChecker()'
+    replace: ''
+
   # Download standalone resources
   - action: download_github
     src: https://github.com/Bob74/bob74_ipl
@@ -170,10 +175,14 @@ tasks:
     search: '"images": {'
     replace: '"images": {"useWebhook": true,'
 
+  - action: replace_string
+    file: ./resources/[core]/es_extended/client/modules/npwd.lua
+    search: 'RegisterNetEvent("esx:playerLoaded", checkPhone)'
+    replace: ''
+
   - action: ensure_dir
     path: ./resources/[scripts]
 
   ## Cleanup
   - action: remove_path
     path: ./tmp
-
