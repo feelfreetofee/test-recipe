@@ -50,7 +50,7 @@ tasks:
 
   - action: replace_string
     file: ./resources/[esx_addons]/esx_hud/server/main.lua
-    search: 'VERSION:RunVersionChecker()'
+    search: 'VERSION:RunVersionChecker\(\)'
     replace: ''
 
   # Download standalone resources
@@ -177,7 +177,7 @@ tasks:
 
   - action: replace_string
     file: ./resources/[core]/es_extended/client/modules/npwd.lua
-    search: 'RegisterNetEvent("esx:playerLoaded", checkPhone)'
+    search: 'RegisterNetEvent\("esx:playerLoaded", checkPhone\)'
     replace: ''
 
   - action: ensure_dir
